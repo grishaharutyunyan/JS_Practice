@@ -1,0 +1,27 @@
+class PersonAccounts extends Banksyst {
+    constructor(accountNumber, ownerName, balance = 0) {
+      super(accountNumber, ownerName, balance);
+      this.accounts = [];
+    }
+  
+    addAccount(account) {
+      this.accounts.push(account);
+    }
+  
+    getAccount(accountNumber) {
+      return this.accounts.find(account => account.id === accountNumber);
+    }
+  
+    getAccountBalance(accountNumber) {
+      const account = this.getAccount(accountNumber);
+      return account ? account.getBalance() : "Account not found";
+    }
+  
+    getAllAccounts() {
+      return this.accounts;
+    }
+  
+    getTotalBalance() {
+      return this.accounts.reduce((total, account) => total + account.getBalance(), 0);
+    }
+  }
